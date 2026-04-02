@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy birthday to you, Zuri. </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <p> [此网页永远祝贺2026-4-25] </p >
+    </div>
+
+    <div id="particle-container"></div>
+    
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+
+
+    <div class="music-player" id="musicPlayer">
+        <div class="cd-disc"></div>
+    </div>
+    
+    <div class="music-notes" id="musicNotes">
+        <span class="note" style="left: 0; animation-delay: 0s;">♪</span>
+        <span class="note" style="left: 20px; animation-delay: 0.5s;">♫</span>
+        <span class="note" style="left: 40px; animation-delay: 1s;">♬</span>
+        <span class="note" style="left: 10px; animation-delay: 1.5s;">♪</span>
+        <span class="note" style="left: 30px; animation-delay: 2s;">♡</span>
+    </div>
+    
+    <div class="screen-flash" id="screenFlash"></div>
+
+    <section class="hero-section" id="home">
+
+        <div class="hero-bg-slideshow"></div>
+
+        <div class="hero-content">
+            <h1 class="main-title">🎂亲爱的ZURI，生日快乐🎂</h1>
+            <p class="sub-title">这是我让Ge老师设计的星云哦！</p >
+            <button id="surpriseBtn">点击获取惊喜</button>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 class="section-title">我们的回忆</h2>
+        <div class="gallery-grid">
+           <div class="photo-card">
+    		<img src="photo1.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo2.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo3.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo4.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo5.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo6.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo7.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo8.jpg">
+	   </div>
+	   <div class="photo-card">
+    		<img src="photo9.jpg">
+	   </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made by [你的成成]</p >
+    </footer>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
