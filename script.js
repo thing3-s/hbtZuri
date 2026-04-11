@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- 0. 🌟 新增：信封开场动画逻辑 🌟 ---
+    const envelopeContainer = document.getElementById('envelope-container');
+    const envelopeWrapper = document.getElementById('envelope-wrapper');
+    const openEnvelopeBtn = document.getElementById('open-envelope-btn');
+
+    if (openEnvelopeBtn && envelopeWrapper && envelopeContainer) {
+        openEnvelopeBtn.addEventListener('click', () => {
+            // 1. 触发信封打开和信纸冒出的动画
+            envelopeWrapper.classList.add('open');
+            
+            // 2. 延迟后触发整体向上的拓展滑动动画
+            envelopeContainer.classList.add('slide-up');
+
+            // 3. 动画完成后将信封彻底从DOM中隐藏，防止阻挡后面的网页点击
+            setTimeout(() => {
+                envelopeContainer.style.display = 'none';
+            }, 2200); // 等待上滑动画执行完毕 (1s 延迟 + 1.2s 动画时间)
+        });
+    }
+
     // 1. 音乐与动画控制
     const surpriseBtn = document.getElementById('surpriseBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -141,4 +161,42 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setTimeout(initParticles, 100);
+
+    // --- NEW: Sticky Note System ---
+    const modal = document.getElementById('sticky-modal');
+    const noteContent = document.getElementById('note-content');
+    const closeBtn = document.getElementById('close-note');
+
+    // Personalized messages (edit freely)
+    const photoNotes = {
+        1: "校园里的花海，花的角度看我们的合照。",
+        2: "雨天寻找咖啡店的日子，最后还是找到合适的一家。",
+        3: "你精致的化了妆，去KTV的路上，这一刻定格。",
+        4: "泉山森林公园里，我们在水杉的间隙，抬头望着天。",
+        5: "你在微信里陪我探索校园的照片，那天的榴莲千层很好吃。",
+        6: "仿佛变成了一朵朵油菜花，，向太阳生长。",
+        7: "你宿舍旁的临花街上，像是深海里的一树花。",
+        8: "那是漫步在樱花小道的夜晚。",
+        9: "呈坎没看到的鱼灯，被我们发现了。"
+    };
+
+    // Add click listeners to all photo cards
+    document.querySelectorAll('.photo-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const photoId = card.getAttribute('data-photo');
+            if (photoNotes[photoId]) {
+                noteContent.innerHTML = `<p>${photoNotes[photoId]}</p>`;
+                modal.style.display = 'flex';
+            }
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
 });

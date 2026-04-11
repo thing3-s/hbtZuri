@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy birthday to you, Zuri. </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div id="envelope-container">
+        <div id="envelope-wrapper" class="envelope-wrapper">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body"></div>
+            <div class="letter-peek">
+                <p class="letter-text">For Zuri</p>
+            </div>
+            <button id="open-envelope-btn" class="seal-btn">开</button>
+        </div>
+    </div>
 
     <div class="top-bar">
         <p> [此网页永远祝贺2026-4-25] </p >
@@ -15,7 +31,6 @@
     <div id="particle-container"></div>
     
     <audio id="bgMusic" src="music.mp3" loop></audio>
-
 
     <div class="music-player" id="musicPlayer">
         <div class="cd-disc"></div>
@@ -45,32 +60,32 @@
     <section class="gallery-section">
         <h2 class="section-title">我们的回忆</h2>
         <div class="gallery-grid">
-           <div class="photo-card">
-    		<img src="photo1.jpg">
+           <div class="photo-card" data-photo="1">
+    		<img src="photo1.jpg" alt="回忆 1">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo2.jpg">
+	   <div class="photo-card" data-photo="2">
+    		<img src="photo2.jpg" alt="回忆 2">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo3.jpg">
+	   <div class="photo-card" data-photo="3">
+    		<img src="photo3.jpg" alt="回忆 3">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo4.jpg">
+	   <div class="photo-card" data-photo="4">
+    		<img src="photo4.jpg" alt="回忆 4">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo5.jpg">
+	   <div class="photo-card" data-photo="5">
+    		<img src="photo5.jpg" alt="回忆 5">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo6.jpg">
+	   <div class="photo-card" data-photo="6">
+    		<img src="photo6.jpg" alt="回忆 6">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo7.jpg">
+	   <div class="photo-card" data-photo="7">
+    		<img src="photo7.jpg" alt="回忆 7">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo8.jpg">
+	   <div class="photo-card" data-photo="8">
+    		<img src="photo8.jpg" alt="回忆 8">
 	   </div>
-	   <div class="photo-card">
-    		<img src="photo9.jpg">
+	   <div class="photo-card" data-photo="9">
+    		<img src="photo9.jpg" alt="回忆 9">
 	   </div>
         </div>
     </section>
@@ -78,6 +93,13 @@
     <footer>
         <p>Made by [你的成成]</p >
     </footer>
+
+    <div id="sticky-modal" class="sticky-modal">
+        <div class="sticky-note">
+            <button id="close-note" class="close-note">&times;</button>
+            <div id="note-content" class="note-content"></div>
+        </div>
+    </div>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
