@@ -1,23 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 0. 🌟 新增：信封开场动画逻辑 🌟 ---
+    // --- 0. 信封开场动画逻辑 ---
     const envelopeContainer = document.getElementById('envelope-container');
     const envelopeWrapper = document.getElementById('envelope-wrapper');
     const openEnvelopeBtn = document.getElementById('open-envelope-btn');
-
+    // 调试：检查元素是否存在
+    console.log('信封容器:', envelopeContainer);
+    console.log('信封包装:', envelopeWrapper);
+    console.log('打开按钮:', openEnvelopeBtn);
     if (openEnvelopeBtn && envelopeWrapper && envelopeContainer) {
-        openEnvelopeBtn.addEventListener('click', () => {
-            // 1. 触发信封打开和信纸冒出的动画
+        openEnvelopeBtn.addEventListener('click', (e) => {
+            console.log('按钮被点击了！'); // 调试用
+            
+            // 阻止事件冒泡（防止触发其他点击）
+            e.stopPropagation();
+            
+            // 1. 触发信封打开动画
             envelopeWrapper.classList.add('open');
             
-            // 2. 延迟后触发整体向上的拓展滑动动画
-            envelopeContainer.classList.add('slide-up');
-
-            // 3. 动画完成后将信封彻底从DOM中隐藏，防止阻挡后面的网页点击
+            // 2. 延迟后触发整体向上滑动
+            setTimeout(() => {
+                envelopeContainer.classList.add('slide-up');
+            }, 600);
+            
+            // 3. 动画完成后隐藏信封
             setTimeout(() => {
                 envelopeContainer.style.display = 'none';
-            }, 2200); // 等待上滑动画执行完毕 (1s 延迟 + 1.2s 动画时间)
+                console.log('信封已隐藏');
+            }, 2200);
         });
+    } else {
+        console.error('信封元素未找到，请检查 HTML id 是否正确');
     }
 
     // 1. 音乐与动画控制
@@ -162,41 +174,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(initParticles, 100);
 
-    // --- NEW: Sticky Note System ---
+    // ... 其他代码（音乐、粒子等）保持不变 ...
+    // --- 照片墙固定 Hitbox 逻辑 ---
     const modal = document.getElementById('sticky-modal');
     const noteContent = document.getElementById('note-content');
     const closeBtn = document.getElementById('close-note');
-
-    // Personalized messages (edit freely)
     const photoNotes = {
         1: "校园里的花海，花的角度看我们的合照。",
         2: "雨天寻找咖啡店的日子，最后还是找到合适的一家。",
         3: "你精致的化了妆，去KTV的路上，这一刻定格。",
         4: "泉山森林公园里，我们在水杉的间隙，抬头望着天。",
         5: "你在微信里陪我探索校园的照片，那天的榴莲千层很好吃。",
-        6: "仿佛变成了一朵朵油菜花，，向太阳生长。",
+        6: "仿佛变成了一朵朵油菜花，向太阳生长。",
         7: "你宿舍旁的临花街上，像是深海里的一树花。",
         8: "那是漫步在樱花小道的夜晚。",
         9: "呈坎没看到的鱼灯，被我们发现了。"
     };
-
-    // Add click listeners to all photo cards
-    document.querySelectorAll('.photo-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const photoId = card.getAttribute('data-photo');
+    // 使用固定的 hitbox 检测鼠标
+    document.querySelectorAll('.photo-hitbox').forEach(hitbox => {
+        const card = hitbox.querySelector('.photo-card');
+        
+        if (!card) {
+            console.error('Hitbox 内找不到 photo-card:', hitbox);
+            return;
+        }
+        // 鼠标进入固定区域 -> 开始动画
+        hitbox.addEventListener('mouseenter', () => {
+            card.classList.add('active');
+            console.log('鼠标进入:', hitbox.dataset.photo);
+        });
+        // 鼠标离开固定区域 -> 结束动画
+        hitbox.addEventListener('mouseleave', () => {
+            card.classList.remove('active');
+            console.log('鼠标离开:', hitbox.dataset.photo);
+        });
+        // 点击事件
+        hitbox.addEventListener('click', () => {
+            const photoId = hitbox.getAttribute('data-photo');
             if (photoNotes[photoId]) {
                 noteContent.innerHTML = `<p>${photoNotes[photoId]}</p>`;
                 modal.style.display = 'flex';
             }
         });
     });
-
-    // Close modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    });
+    // 关闭模态框
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
 });

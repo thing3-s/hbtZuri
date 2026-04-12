@@ -181,35 +181,47 @@ button:hover {
     padding: 0 20px;
 }
 
-/* 照片卡片容器 */
-.photo-card {
-    background: rgba(255, 255, 255, 0.03); /* 极度透明 */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* 极细边框 */
-    border-radius: 30px; /* 偏向直角的微圆角，比大圆角更高级 */
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+/* 固定检测区域 - 始终保持初始矩形，不随动画变化 */
+.photo-hitbox {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  cursor: pointer;
 }
 
-/* 鼠标悬停时的动感效果 */
-.photo-card:hover {
-    transform: translateY(-20px) rotate(370deg); /* 向上浮动并轻微旋转 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 77, 109, 1); /* 悬浮时透出一丝粉光 */
+/* 实际执行动画的卡片 - 初始状态 */
+.photo-hitbox .photo-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(5px);
+  /* 初始状态明确设置 */
+  transform: translateY(0) rotate(0deg) scaleX(1) scaleY(1);
+}
+
+/* 动画激活状态 - 完全还原你原来的效果 */
+.photo-hitbox .photo-card.active {
+  transform: translateY(-20px) rotate(190deg) scaleX(-1) scaleY(-1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 77, 109, 1);
 }
 
 /* 卡片内的图片样式 */
-.photo-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 🌟 关键：图片自动裁剪填充，防止拉伸变形 */
-    border-radius: 30px;
-    display: block;
+.photo-hitbox .photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  display: block;
 }
+
 
 footer {
     text-align: center;
@@ -432,7 +444,7 @@ footer {
     background: radial-gradient(circle, #940b65, #e270ff);
     border: 2px solid #c8d6e5;
     border-radius: 50%;
-    z-index: 4;
+    z-index: 10001;
     cursor: pointer;
     color: #2f3640;
     font-family: 'Ma Shan Zheng', cursive;
@@ -537,9 +549,4 @@ footer {
 
 .note-content {
     margin-top: 10px;
-}
-
-/* Hover effect on photos */
-.photo-card {
-    cursor: pointer;
 }

@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy birthday to you, Zuri. </title>
-
+    <title>Happy birthday to you, Zuri.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <!-- 信封必须在最前面，z-index 最高 -->
     <div id="envelope-container">
         <div id="envelope-wrapper" class="envelope-wrapper">
             <div class="envelope-flap"></div>
@@ -25,13 +23,14 @@
     </div>
 
     <div class="top-bar">
-        <p> [此网页永远祝贺2026-4-25] </p >
+        <p>[此网页永远祝贺2026-4-25]</p>
     </div>
 
     <div id="particle-container"></div>
     
+    <!-- 修复：audio 标签必须正确闭合 -->
     <audio id="bgMusic" src="music.mp3" loop></audio>
-
+    
     <div class="music-player" id="musicPlayer">
         <div class="cd-disc"></div>
     </div>
@@ -47,12 +46,10 @@
     <div class="screen-flash" id="screenFlash"></div>
 
     <section class="hero-section" id="home">
-
         <div class="hero-bg-slideshow"></div>
-
         <div class="hero-content">
-            <h1 class="main-title">🎂亲爱的ZURI，生日快乐🎂</h1>
-            <p class="sub-title">这是我让Ge老师设计的星云哦！</p >
+            <h1 class="main-title">🎂亲爱的ZURI，20岁生日快乐🎂</h1>
+            <p class="sub-title">这是我让Ge老师设计的星云哦！</p>
             <button id="surpriseBtn">点击获取惊喜</button>
         </div>
     </section>
@@ -60,38 +57,57 @@
     <section class="gallery-section">
         <h2 class="section-title">我们的回忆</h2>
         <div class="gallery-grid">
-           <div class="photo-card" data-photo="1">
-    		<img src="photo1.jpg" alt="回忆 1">
-	   </div>
-	   <div class="photo-card" data-photo="2">
-    		<img src="photo2.jpg" alt="回忆 2">
-	   </div>
-	   <div class="photo-card" data-photo="3">
-    		<img src="photo3.jpg" alt="回忆 3">
-	   </div>
-	   <div class="photo-card" data-photo="4">
-    		<img src="photo4.jpg" alt="回忆 4">
-	   </div>
-	   <div class="photo-card" data-photo="5">
-    		<img src="photo5.jpg" alt="回忆 5">
-	   </div>
-	   <div class="photo-card" data-photo="6">
-    		<img src="photo6.jpg" alt="回忆 6">
-	   </div>
-	   <div class="photo-card" data-photo="7">
-    		<img src="photo7.jpg" alt="回忆 7">
-	   </div>
-	   <div class="photo-card" data-photo="8">
-    		<img src="photo8.jpg" alt="回忆 8">
-	   </div>
-	   <div class="photo-card" data-photo="9">
-    		<img src="photo9.jpg" alt="回忆 9">
-	   </div>
+            <!-- 修复：外层是 photo-hitbox，内层是 photo-card -->
+            <div class="photo-hitbox" data-photo="1">
+                <div class="photo-card">
+                    <img src="photo1.jpg" alt="回忆 1">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="2">
+                <div class="photo-card">
+                    <img src="photo2.jpg" alt="回忆 2">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="3">
+                <div class="photo-card">
+                    <img src="photo3.jpg" alt="回忆 3">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="4">
+                <div class="photo-card">
+                    <img src="photo4.jpg" alt="回忆 4">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="5">
+                <div class="photo-card">
+                    <img src="photo5.jpg" alt="回忆 5">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="6">
+                <div class="photo-card">
+                    <img src="photo6.jpg" alt="回忆 6">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="7">
+                <div class="photo-card">
+                    <img src="photo7.jpg" alt="回忆 7">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="8">
+                <div class="photo-card">
+                    <img src="photo8.jpg" alt="回忆 8">
+                </div>
+            </div>
+            <div class="photo-hitbox" data-photo="9">
+                <div class="photo-card">
+                    <img src="photo9.jpg" alt="回忆 9">
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>Made by [你的成成]</p >
+        <p>Made by [你的成成]</p>
     </footer>
 
     <div id="sticky-modal" class="sticky-modal">
