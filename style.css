@@ -158,7 +158,7 @@ button:hover {
 
 /* 照片墙区 */
 .gallery-section {
-    padding: 100vh 20px 130px;
+    padding:20vh 20px 130px;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
